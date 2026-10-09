@@ -12,8 +12,6 @@ import {
 
 import { eventsData } from "@/components/news/data/news.data";
 import type { SchoolEvent } from "@/components/news/data/news.data";
-import { useAppDispatch } from "@/lib/hooks";
-import { setSearchOpen } from "@/features/search/searchSlice";
 
 function getSearchableContent(event: SchoolEvent): string {
   return [
@@ -42,8 +40,11 @@ function getSearchableContent(event: SchoolEvent): string {
     .trim();
 }
 
-export default function SearchMenu() {
-  const dispatch = useAppDispatch();
+interface SearchMenuProps {
+  onClose: () => void;
+}
+
+export default function SearchMenu({ onClose }: SearchMenuProps) {
   const [query, setQuery] = useState("");
 
   const suggestions = useMemo(() => {
@@ -174,7 +175,7 @@ export default function SearchMenu() {
               <Link
                 key={event.id}
                 href={`/news/${event.slug}`}
-                onClick={() => dispatch(setSearchOpen(false))}
+                onClick={onClose}
                 className="group flex items-center gap-3 rounded-md p-2 transition-colors hover:bg-slate-50 focus-visible:bg-slate-50 focus-visible:outline-none"
               >
                 {/* Event thumbnail */}
@@ -251,7 +252,7 @@ export default function SearchMenu() {
 
         <Link
           href="/news"
-          onClick={() => dispatch(setSearchOpen(false))}
+          onClick={onClose}
           className="inline-flex items-center gap-1 text-xs font-semibold text-[#002147] transition-colors hover:text-[#003566]"
         >
           All events

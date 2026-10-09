@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -12,12 +13,6 @@ import {
 } from "react-icons/fi";
 import { CgMenuLeft } from "react-icons/cg";
 
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import {
-  closeMobileMenu as closeMobileMenuAction,
-  toggleMobileMenu,
-} from "@/lib/slice/navigation.slice";
-import { setSearchOpen } from "@/features/search/searchSlice";
 import websiteLogo from "../../assets/images/website-logo.png";
 import SearchMenu from "../search-menu/SearchMenu";
 
@@ -55,25 +50,22 @@ const socialLinks = [
 ];
 
 const Navbar = () => {
-  const dispatch = useAppDispatch();
-  const mobileMenuOpen = useAppSelector(
-    (state) => state.navigation.mobileMenuOpen,
-  );
-  const searchOpen = useAppSelector((state) => state.search.isOpen);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const closeMobileMenu = () => {
-    dispatch(closeMobileMenuAction());
-    dispatch(setSearchOpen(false));
+    setMobileMenuOpen(false);
+    setSearchOpen(false);
   };
 
   const handleMobileMenuToggle = () => {
-    dispatch(setSearchOpen(false));
-    dispatch(toggleMobileMenu());
+    setSearchOpen(false);
+    setMobileMenuOpen((open) => !open);
   };
 
   const handleSearchToggle = () => {
-    dispatch(closeMobileMenuAction());
-    dispatch(setSearchOpen(!searchOpen));
+    setMobileMenuOpen(false);
+    setSearchOpen((open) => !open);
   };
 
   return (
@@ -187,7 +179,7 @@ const Navbar = () => {
         </div>
       )}
 
-      {searchOpen && <SearchMenu />}
+      {searchOpen && <SearchMenu onClose={() => setSearchOpen(false)} />}
     </header>
   );
 };

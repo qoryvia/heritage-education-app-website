@@ -42,11 +42,6 @@ const socialLinks = [
     href: "https://youtube.com/@hipskasiakushinagar?si=F698Sg4U2QxCNJbL",
     Icon: FiYoutube,
   },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/hipskushinagar",
-    Icon: FiLinkedin,
-  },
 ];
 
 const Navbar = () => {
@@ -107,7 +102,7 @@ const Navbar = () => {
               width={190}
               height={58}
               priority
-              className="h-auto w-[88px] object-contain sm:w-[105px] lg:w-[120px]"
+              className="h-auto w-[110px] object-contain sm:w-[120px] lg:w-[130px]"
             />
           </Link>
 
@@ -126,7 +121,7 @@ const Navbar = () => {
         </div>
 
         {/* Right side: search and social media icons */}
-        <div className="flex shrink-0 items-center gap-2 sm:gap-3 lg:gap-4">
+        <div className="flex shrink-0 items-center gap-4 sm:gap-6">
           <button
             type="button"
             aria-label={searchOpen ? "Close search" : "Open search"}
@@ -136,11 +131,11 @@ const Navbar = () => {
             onClick={handleSearchToggle}
             className="flex h-9 w-7 shrink-0 items-center justify-center text-gray-600 transition-colors hover:text-[#002147]"
           >
-            {searchOpen ? <FiX size={19} /> : <FiSearch size={19} />}
+            {searchOpen ? <FiX size={24} /> : <FiSearch size={24} />}
           </button>
 
           {/* Social media icons on the right */}
-          <div className="flex items-center gap-2 text-gray-500 sm:gap-3">
+          <div className="flex items-center gap-4 text-gray-500 sm:gap-6">
             {socialLinks.map(({ label, href, Icon }) => (
               <a
                 key={label}
@@ -151,7 +146,7 @@ const Navbar = () => {
                 title={label}
                 className="flex h-8 w-5 items-center justify-center transition-colors hover:text-[#002147] sm:w-6"
               >
-                <Icon size={16} />
+                <Icon size={24} />
               </a>
             ))}
           </div>

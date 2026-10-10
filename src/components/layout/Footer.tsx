@@ -70,7 +70,7 @@ export default async function Footer() {
               width={190}
               height={58}
               priority
-              className="h-auto w-[88px] object-contain sm:w-[105px] lg:w-[120px]"
+              className="h-auto w-[110px] object-contain sm:w-[120px] lg:w-[130px]"
             />
           </Link>
 
@@ -91,7 +91,7 @@ export default async function Footer() {
           </nav>
 
           {/* Social media links */}
-          <div className="flex shrink-0 items-center gap-2.5">
+          <div className="flex shrink-0 items-center gap-4 sm:gap-6">
             {socialLinks.map(({ label, href, Icon }) => (
               <a
                 key={label}
@@ -100,9 +100,9 @@ export default async function Footer() {
                 rel="noopener noreferrer"
                 aria-label={label}
                 title={label}
-                className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 text-slate-600 transition-colors hover:border-[#002147] hover:text-[#002147]"
+                className="flex h-8 w-8 items-center justify-center rounded-full  text-slate-600 transition-colors hover:border-[#002147] hover:text-[#002147]"
               >
-                <Icon size={16} />
+                <Icon size={24} />
               </a>
             ))}
           </div>

@@ -100,7 +100,7 @@ export default function SearchMenu({ onClose }: SearchMenuProps) {
   return (
     <div
       id="heritage-search-menu"
-      className="absolute right-6 top-full z-[100] mt-3 w-[min(92vw,420px)] overflow-hidden rounded-lg border border-slate-200 bg-white shadow-xl shadow-slate-900/10 xl:right-40"
+      className="absolute right-6 top-full z-[100] mt-3 w-[min(92vw,390px)] overflow-hidden rounded-lg border border-slate-200 bg-white shadow-xl shadow-slate-900/10 xl:right-40"
     >
       {/* Search input */}
       <div className="border-b border-slate-100 p-4">
